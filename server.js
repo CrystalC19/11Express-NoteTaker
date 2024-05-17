@@ -18,7 +18,13 @@ const app = express();
 /// Middelware
 
 app.use(express.json());
-app.use(express.urlencoded({ exteneded: true}));
+
+
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//app.use(express.urlencoded());
 
 app.use(express.static(`Develop/public`));
 
