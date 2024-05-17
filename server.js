@@ -1,6 +1,8 @@
 /// Importing , require , creating paths
 
-const express = require ('express');
+const express = require ('express')
+ //const router = require (`express`).Router();
+
 const fs = require(`fs`);
 const path = require (`path`);
 const uniqid = require (`uniqid`);
@@ -56,7 +58,7 @@ const readThenAppendJson = (content , file) => {
 };
 // add a third parameter for spacing on json
 const writeNewNoteToJson = (destinaton, content) =>
-    fs.writeFile (destinaton, JSON.stringify(content, null,),(err) =>
+    fs.writeFile (destinaton, JSON.stringify(content, null, 4),(err) =>
         err ? console.error(err): console.info (`\nData ${destinaton}`)
     );
 
@@ -69,6 +71,7 @@ const writeNewNoteToJson = (destinaton, content) =>
             const newNote = {
                 title: title,
                 text : text,
+                id: uniqid
                 // add id third parameter
             };
             readThenAppendJson(newNote, `Develop/db/db.json`);
